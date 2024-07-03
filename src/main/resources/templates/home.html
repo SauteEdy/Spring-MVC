@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Home</title>
+</head>
+<body>
+    <div class="container lg">
+        <div class="col-12 bg-primary text-white rounded-2 my-3">
+            <h1 class=" fw-bold text-center py-3">Gestão de Clientes</h1>
+        </div>
+        <div class="col-6 m-auto">
+            <p class="text-center py-5">
+                O CRM armazena todas as informações de contato dos clientes, incluindo nomes, endereços, e históricos de interações. <br> 
+                Isso permite que as empresas tenham uma visão completa de cada cliente.
+                O CRM rastreia o pipeline de vendas, ajudando a gerenciar leads, oportunidades e fechamentos. <br>
+                Isso permite uma visão clara do progresso de cada negociação e facilita a previsão de receitas.
+            </p>
+        </div>
+        <div class="col-3 m-auto">
+            <button class="btn btn-primary text-white">CADASTRAR</button>
+            <button  class="btn btn-primary text-white px-4 mx-2">
+                <a th:href="@{/home/listar}" class="text-white text-decoration-none">LISTAR</a>
+            </button>
+        </div>
+    </div>
+    
+    
+</body>
+</html>
