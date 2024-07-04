@@ -1,10 +1,13 @@
 package com.example.clientes.clientes.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -33,6 +36,31 @@ public class HomeController {
         List<Cliente> clientes = clienteRepository.findAll();
 
         modelAndView.addObject("clientes", clientes);
+        return modelAndView;
+    }
+
+    @GetMapping("/cadastrar")
+    public ModelAndView cadastrar(){
+        ModelAndView modelAndView = new ModelAndView("cliente/cadastrar");
+
+        modelAndView.addObject("cliente", new Cliente());
+        return modelAndView;
+    }
+
+    @PostMapping("/cadastrar")
+    public String cadastrar(Cliente cliente){
+        
+        clienteRepository.save(cliente);
+
+        return "redirect:/home/listar";
+    }
+
+    @GetMapping("/{id}/cliente")
+    public ModelAndView clienteId(@PathVariable Long id){
+        ModelAndView modelAndView = new ModelAndView("cliente/clienteId");
+
+        Optional<Cliente> cliente = clienteRepository.findById(id);
+        modelAndView.addObject("cliente",cliente.get());
         return modelAndView;
     }
 }

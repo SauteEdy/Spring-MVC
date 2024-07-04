@@ -18,17 +18,25 @@
                 <th scope="col">Nome</th>
                 <th scope="col">Data-Nascimento</th>
                 <th scope="col">Profissão</th>
+                <th scope="col"></th>
               </tr>
             </thead>
             <tbody>
               <tr th:each="cliente : ${clientes}">
                 <th th:text="${cliente.id}" scope="row">1</th>
-                <td th:text="${cliente.nome}">Mark</td>
+                <td>
+                  <a th:text="${cliente.nome}" th:href="@{'/home/' + ${cliente.id} + '/cliente'}"></a>
+                </td>
                 <td th:text="${cliente.dataNascimento}">Otto</td>
                 <td th:text="${cliente.profissao}">@mdo</td>
-             
+                <td>
+                    <a th:href="@{/home/editar}" class="btn btn-warning">EDITAR</a>
+                    <a th:href="@{/home/apagar}" class="btn btn-danger">APAGAR</a>
+                </td>
             </tbody>
           </table>
+              <a th:href="@{/home/cadastrar}" class="btn btn-primary">Adicionar Cliente</a>
+          
     </div>
     
 </body>
