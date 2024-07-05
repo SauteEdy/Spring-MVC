@@ -63,4 +63,28 @@ public class HomeController {
         modelAndView.addObject("cliente",cliente.get());
         return modelAndView;
     }
+
+    @GetMapping("/{id}/cliente/editar")
+    public ModelAndView editarCliente(@PathVariable Long id){
+        ModelAndView modelAndView = new ModelAndView("cliente/editar");
+
+        Optional<Cliente> cliente = clienteRepository.findById(id);
+        modelAndView.addObject("cliente",cliente.get());
+        return modelAndView;
+    }
+    @PostMapping("/cliente/editar")
+    public String editarCliente(Cliente cliente){
+        
+        clienteRepository.save(cliente);
+
+        return "redirect:/home/listar";
+    }
+
+    @GetMapping("/{id}/cliente/apagar")
+    public String apagarCliente(@PathVariable Long id){
+        Optional<Cliente> cliente = clienteRepository.findById(id);
+        clienteRepository.delete(cliente.get());
+
+        return "redirect:/home/listar";
+    }
 }
